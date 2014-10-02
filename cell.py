@@ -4,7 +4,7 @@ class Cell:
     def __init__(self,posX,posY):
         self.x=posX
         self.y=posY
-        self.Actor=None
+        self.Actor=[]
 
-    def setActor(self,actor):
-        self.Actor=actor
+    def addActor(self,actor):
+        self.Actor.append(actor)
