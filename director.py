@@ -9,22 +9,28 @@ class gameDirector:
     def __init__(self, mappa):
         self.mappa = mappa
         self.attori = []
-        self.tagliaL = []
-        self.albe = []
+        self.tagliaL = 0
+        self.albe = 0
         self.orsi = []
         self.time = 0
         self.popuLimit = 500
 
     # def update(self): #Director ha la responsabilita
+    def getNumAttori(self):
+        return self.albe,self.tagliaL
 
     def tick(self):
-
+        self.albe=self.tagliaL=0
         if self.time % 12 == 0:
             self.yearPassed()
         x = 0
         self.time = self.time + 1
 
         for i in xrange(len(self.attori),-1,-1):
+            if self.attori[i-1].getType()=="TREE":
+                self.albe=self.albe+1
+            else : self.tagliaL=self.tagliaL+1
+
             self.attori[i-1].act()
 
         x = x + 1
@@ -82,7 +88,7 @@ class gameDirector:
                         if p < 2:
                             pass
                             #self.inst(i,j,"BEAR")
-                        if p > 2 and p < 4:
+                        if p > 2 and p < 8:
                             pass
                             self.inst(i, j, "LUMB")
                             self.popuLimit = self.popuLimit - 1

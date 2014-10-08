@@ -35,7 +35,7 @@ class Tree(Actor):
 
     def sprawl(self):  #oribbbile da rifare tutta
 
-        p = random.randint(0, 10)
+        p = random.randint(0, 40)
         if p == 1:
             vicini = self.dir.getNeighb(self.posX, self.posY)
             q = random.randint(0, abs(len(vicini) - 1))
